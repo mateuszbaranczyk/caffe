@@ -1,8 +1,9 @@
-import { Text, View, Pressable } from "react-native";
+import { Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
 
 import InitialPour from "@/components/InitialPour";
 import PourOver from "@/components/PourOver";
+import Timer from "@/components/Timer";
 
 export default function Recipe({ route }: any) {
   const { coffeeAmount, selectStrength, selectSweetness } = route.params;
@@ -37,14 +38,9 @@ export default function Recipe({ route }: any) {
   return (
     <View>
       <Text>Dose: {dose} g</Text>
-      <InitialPour sweetness={selectSweetness} weight={coffeeAmount} />
-      <PourOver strength={selectStrength} weight={coffeeAmount}/>
-      <Text>Timer: {timer} seconds</Text>
-      <View>
-        <Pressable onPress={startTimer}><Text>Start</Text></Pressable>
-        <Pressable onPress={stopTimer}><Text>Stop</Text></Pressable>
-        <Pressable onPress={resetTimer}><Text>Reset</Text></Pressable>
-      </View>
+      <InitialPour sweetness={selectSweetness} weight={coffeeAmount} timer={timer} />
+      <PourOver strength={selectStrength} weight={coffeeAmount} />
+      <Timer timer={timer} onStart={startTimer} onStop={stopTimer} onReset={resetTimer} />
     </View>
   );
 }
