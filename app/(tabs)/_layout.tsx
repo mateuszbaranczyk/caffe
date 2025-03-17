@@ -1,10 +1,14 @@
-import { Tabs } from 'expo-router';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Calculator from ".";
+import Recipe from "./recipe";
 
-export default function TabLayout() {
+const Tab = createBottomTabNavigator();
+
+export default function TabNavigator() {
   return (
-    <Tabs>
-      <Tabs.Screen name="index" options={{ title: 'Calculator' }} />
-      <Tabs.Screen name="recipe" options={{ title: 'Recipe' }} />
-    </Tabs>
+    <Tab.Navigator>
+      <Tab.Screen name="Calculator" component={Calculator} />
+      <Tab.Screen name="Recipe" component={Recipe} />
+    </Tab.Navigator>
   );
 }
