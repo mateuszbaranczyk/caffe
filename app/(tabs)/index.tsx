@@ -3,12 +3,23 @@ import { Text, View, TextInput, Pressable } from "react-native";
 
 import { styles } from "@/components/styles";
 
-import LabeledRadioButton from "@/components/LabeledRadioButton";
+import RadioChoice from "@/components/RadioChoice";
 
 export default function Calculator() {
   const [coffeeAmount, setCoffeeAmount] = useState("");
   const [selectStrength, setSelectStrength] = useState("medium");
   const [selectSweetness, setSelectSweetness] = useState("sweeter");
+  
+  const strengthChoices = [
+    { value: "soft", label: "Soft" },
+    { value: "medium", label: "Medium" },
+    { value: "strong", label: "Strong" }
+  ];
+  const sweetnessChoices = [
+    { value: "standard", label: "Standard" },
+    { value: "sweeter", label: "Sweeter" },
+    { value: "brighter", label: "Brighter" }
+  ];
 
   return (
     <>
@@ -26,44 +37,18 @@ export default function Calculator() {
         />
       </View>
       <View style={styles.radioContainer}>
-        <LabeledRadioButton
-          value="soft"
-          label="Soft"
-          status={selectStrength}
-          onPress={() => setSelectStrength("soft")}
-        />
-        <LabeledRadioButton
-          value="medium"
-          label="Medium"
-          status={selectStrength}
-          onPress={() => setSelectStrength("medium")}
-        />
-        <LabeledRadioButton
-          value="hard"
-          label="Hard"
-          status={selectStrength}
-          onPress={() => setSelectStrength("hard")}
-        />
+        <RadioChoice 
+        choices={strengthChoices}
+        title="Strength"
+        status={selectStrength}
+        onPress={setSelectStrength} />
       </View>
       <View style={styles.radioContainer}>
-        <LabeledRadioButton
-          value="standard"
-          label="Standard"
-          status={selectSweetness}
-          onPress={() => setSelectSweetness("standard")}
-        />
-        <LabeledRadioButton
-          value="sweeter"
-          label="Sweeter"
-          status={selectSweetness}
-          onPress={() => setSelectSweetness("sweeter")}
-        />
-        <LabeledRadioButton
-          value="brighter"
-          label="Brighter"
-          status={selectSweetness}
-          onPress={() => setSelectSweetness("brighter")}
-        />
+        <RadioChoice
+        choices={sweetnessChoices}
+        title="Sweetness"
+        status={selectSweetness}
+        onPress={setSelectSweetness} />
       </View>
       <View style={styles.buttonContainer}>
         <Pressable style={styles.button} onPress={() => console.log(selectStrength, selectSweetness, coffeeAmount)}>
