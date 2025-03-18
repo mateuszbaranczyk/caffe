@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { theme } from "./theme";
-import { Button } from "react-native-paper";
 
 export const styles = StyleSheet.create({
   containerMain: {
@@ -11,15 +10,24 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  containerInput: {
+    borderWidth: theme.spacing.xs,
+    borderColor: theme.colors.accent,
+    borderRadius: theme.borderRadius.medium,
+    padding: theme.spacing.sm,
+    margin: theme.spacing.sm,
+  },
   textIntro: {
     color: theme.colors.text,
     fontSize: theme.fontSizes.large,
     margin: theme.spacing.md,
+    textAlign: "center",
   },
   textAccent: {
     color: theme.colors.text,
     fontSize: theme.fontSizes.medium,
     margin: theme.spacing.md,
+    flexDirection: "row",
   },
   textInput: {
     borderRadius: theme.borderRadius.medium,

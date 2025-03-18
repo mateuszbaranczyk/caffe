@@ -43,19 +43,19 @@ export default function Calculator() {
   return (
     <ScrollView style={styles.containerMain}>
       <View>
-        <Text style={styles.textIntro}>The 4:6 method for V60 brewing, by Tetsu Kasuya, divides the process into five pours. The first 40% balances sweetness and acidity, while the remaining 60% adjusts strength. It offers precision and control for a perfectly balanced cup.</Text>
+        <Text style={styles.textIntro}>Step right up and craft your dream cup of coffee!</Text>
       </View>
       <View>
-        <View style={styles.container}>
-            <Text style={styles.textAccent}>How much coffee would you like?</Text>
-            <TextInput
-              style={styles.textInput}
-              placeholder="Weight in grams"
-              value={coffeeAmount}
-              onChangeText={setCoffeeAmount}
-              keyboardType="numeric"
-              placeholderTextColor={theme.colors.secondary}
-            />
+        <View style={styles.containerInput}>
+          <Text style={styles.textAccent}>How much coffee would you like?</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Weight in grams"
+            value={coffeeAmount}
+            onChangeText={setCoffeeAmount}
+            keyboardType="numeric"
+            placeholderTextColor={theme.colors.secondary}
+          />
         </View>
       </View>
       <View>
