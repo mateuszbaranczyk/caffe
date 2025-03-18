@@ -13,7 +13,7 @@ interface Props {
 export default function LabeledRadioButton({ value, label, status, onPress }: Props) {
   return (
     <View style={styles.container}>
-      <RadioButton color={theme.colors.accent} uncheckedColor={theme.colors.primary} value={value} status={status === value ? "checked" : "unchecked"} onPress={() => onPress(value)} />
+      <RadioButton color={theme.colors.accent} uncheckedColor={theme.colors.secondary} value={value} status={status === value ? "checked" : "unchecked"} onPress={() => onPress(value)} />
       <Text style={styles.label}>{label}</Text>
     </View>
   );
@@ -21,13 +21,13 @@ export default function LabeledRadioButton({ value, label, status, onPress }: Pr
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
-    margin: theme.spacing.md,
   },
   label: {
     color: theme.colors.text,
-    fontSize: theme.fontSizes.large,
+    fontSize: theme.fontSizes.medium,
     margin: theme.spacing.sm,
+    marginRight: theme.spacing.md,
   },
 });

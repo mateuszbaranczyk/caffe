@@ -4,6 +4,7 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { styles } from "@/components/styles";
 
 import RadioChoice from "@/components/RadioChoice";
+import { theme } from "@/components/theme";
 
 type RootStackParamList = {
   Recipe: {
@@ -33,9 +34,9 @@ export default function Calculator() {
 
   const handleCalculate = () => {
     navigation.navigate("Recipe", {
-      coffeeAmount,
-      selectStrength,
-      selectSweetness,
+      coffeeAmount: "300",
+      selectStrength: "medium",
+      selectSweetness: "low",
     });
   };
 
@@ -44,15 +45,18 @@ export default function Calculator() {
       <View>
         <Text style={styles.textIntro}>The 4:6 method for V60 brewing, by Tetsu Kasuya, divides the process into five pours. The first 40% balances sweetness and acidity, while the remaining 60% adjusts strength. It offers precision and control for a perfectly balanced cup.</Text>
       </View>
-      <View style={styles.container}>
-        <Text style={styles.textAccent}>How much coffee would you like?</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Weight in grams"
-          value={coffeeAmount}
-          onChangeText={setCoffeeAmount}
-          keyboardType="numeric"
-        />
+      <View>
+        <View style={styles.container}>
+            <Text style={styles.textAccent}>How much coffee would you like?</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Weight in grams"
+              value={coffeeAmount}
+              onChangeText={setCoffeeAmount}
+              keyboardType="numeric"
+              placeholderTextColor={theme.colors.secondary}
+            />
+        </View>
       </View>
       <View>
         <RadioChoice choices={strengthChoices} title="Strength" status={selectStrength} onPress={setSelectStrength} />
@@ -65,10 +69,12 @@ export default function Calculator() {
           onPress={setSelectSweetness}
         />
       </View>
-      <View style={styles.container}>
-        <Pressable style={styles.button} onPress={() => handleCalculate()}>
-          <Text style={styles.buttonText}>Calculate</Text>
-        </Pressable>
+      <View>
+        <View style={styles.containerButton}>
+          <Pressable style={styles.button} onPress={() => handleCalculate()}>
+            <Text style={styles.buttonText}>Calculate</Text>
+          </Pressable>
+        </View>
       </View>
     </ScrollView>
   );

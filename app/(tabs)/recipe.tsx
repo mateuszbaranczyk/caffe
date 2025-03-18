@@ -6,12 +6,12 @@ import PourOver from "@/components/PourOver";
 import Timer from "@/components/Timer";
 
 export default function Recipe({ route }: any) {
-  const { coffeeAmount, selectStrength, selectSweetness } = route.params;
+  const { coffeeAmount = 0, selectStrength = "medium", selectSweetness = "low" } = route.params || {};
   const dose = Math.round(coffeeAmount / 15);
 
   const [timer, setTimer] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-
+ 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
 
