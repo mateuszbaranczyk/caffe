@@ -1,55 +1,46 @@
 import { StyleSheet } from "react-native";
+import { theme } from "./theme";
+import { Button } from "react-native-paper";
 
 export const styles = StyleSheet.create({
-  container: {
+  containerMain: {
     flex: 1,
-    backgroundColor: "#25292e",
+    backgroundColor: theme.colors.background,
+  },
+  container: {
     alignItems: "center",
+    justifyContent: "center",
   },
   textIntro: {
-    color: "white",
+    color: theme.colors.text,
+    fontSize: theme.fontSizes.large,
+    margin: theme.spacing.md,
   },
-  text: {
-    color: "white",
+  textAccent: {
+    color: theme.colors.text,
+    fontSize: theme.fontSizes.large,
+    margin: theme.spacing.md,
+    fontWeight: "bold",
   },
-  input: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    padding: 10,
-    marginTop: 10,
-    color: "white",
-  },
-  radioRow: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  radioText: {
-    marginLeft: 8,
-  },
-  radioContainer: {
-
+  textInput: {
+    height: 50,
+    width: "80%",
+    borderColor: theme.colors.secondary,
+    borderWidth: theme.spacing.xs,
+    borderRadius: theme.borderRadius.medium,
+    paddingHorizontal: theme.spacing.md,
+    backgroundColor: theme.colors.primary,
+    fontSize: theme.fontSizes.large,
+    color: theme.colors.background,
   },
   button: {
-    borderRadius: 10,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    borderWidth: 4,
-    borderColor: '#ffd33d'
+    backgroundColor: theme.colors.primary,
+    borderRadius: theme.borderRadius.medium,
+    padding: theme.spacing.md,
+    margin: theme.spacing.md,
   },
-  buttonLabel: {
-    color: 'black',
-    fontSize: 16,
-  },
-  buttonContainer: {
-    width: 320,
-    height: 68,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 3,
+  buttonText: {
+    color: theme.colors.background,
+    fontSize: theme.fontSizes.large,
   },
 });

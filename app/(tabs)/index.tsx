@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View, TextInput, Pressable } from "react-native";
+import { Text, View, TextInput, Pressable, ScrollView } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { styles } from "@/components/styles";
 
@@ -40,13 +40,14 @@ export default function Calculator() {
   };
 
   return (
-    <>
+    <ScrollView style={styles.containerMain}>
       <View>
-        <Text>Prepared for 4:6 method by Tetsu Kasuya</Text>
+        <Text style={styles.textIntro}>The 4:6 method for V60 brewing, by Tetsu Kasuya, divides the process into five pours. The first 40% balances sweetness and acidity, while the remaining 60% adjusts strength. It offers precision and control for a perfectly balanced cup.</Text>
       </View>
-      <View>
-        <Text>How much coffee would you like?</Text>
+      <View style={styles.container}>
+        <Text style={styles.textAccent}>How much coffee would you like?</Text>
         <TextInput
+          style={styles.textInput}
           placeholder="Weight in grams"
           value={coffeeAmount}
           onChangeText={setCoffeeAmount}
@@ -64,11 +65,11 @@ export default function Calculator() {
           onPress={setSelectSweetness}
         />
       </View>
-      <View>
-        <Pressable onPress={() => handleCalculate()}>
-          <Text>Calculate</Text>
+      <View style={styles.container}>
+        <Pressable style={styles.button} onPress={() => handleCalculate()}>
+          <Text style={styles.buttonText}>Calculate</Text>
         </Pressable>
       </View>
-    </>
+    </ScrollView>
   );
 }

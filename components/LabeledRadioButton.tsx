@@ -1,7 +1,7 @@
 import { RadioButton } from "react-native-paper";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
-import { styles } from "@/components/styles";
+import { theme } from "./theme";
 
 interface Props {
   value: string;
@@ -12,9 +12,22 @@ interface Props {
 
 export default function LabeledRadioButton({ value, label, status, onPress }: Props) {
   return (
-    <View>
-      <RadioButton value={value} status={status === value ? "checked" : "unchecked"} onPress={() => onPress(value)} />
-      <Text>{label}</Text>
+    <View style={styles.container}>
+      <RadioButton color={theme.colors.accent} uncheckedColor={theme.colors.primary} value={value} status={status === value ? "checked" : "unchecked"} onPress={() => onPress(value)} />
+      <Text style={styles.label}>{label}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "column",
+    alignItems: "center",
+    margin: theme.spacing.md,
+  },
+  label: {
+    color: theme.colors.text,
+    fontSize: theme.fontSizes.large,
+    margin: theme.spacing.sm,
+  },
+});
