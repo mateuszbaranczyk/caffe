@@ -41,23 +41,22 @@ export default function Calculator() {
 
   return (
     <>
-      <View style={styles.container}>
-        <Text style={styles.textIntro}>Prepared for 4:6 method by Tetsu Kasuya</Text>
+      <View>
+        <Text>Prepared for 4:6 method by Tetsu Kasuya</Text>
       </View>
-      <View style={styles.container}>
-        <Text style={styles.text}>How much coffee would you like?</Text>
+      <View>
+        <Text>How much coffee would you like?</Text>
         <TextInput
-          style={styles.input}
           placeholder="Weight in grams"
           value={coffeeAmount}
           onChangeText={setCoffeeAmount}
           keyboardType="numeric"
         />
       </View>
-      <View style={styles.radioContainer}>
+      <View>
         <RadioChoice choices={strengthChoices} title="Strength" status={selectStrength} onPress={setSelectStrength} />
       </View>
-      <View style={styles.radioContainer}>
+      <View>
         <RadioChoice
           choices={sweetnessChoices}
           title="Sweetness"
@@ -65,9 +64,9 @@ export default function Calculator() {
           onPress={setSelectSweetness}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <Pressable style={styles.button} onPress={() => handleCalculate()}>
-          <Text style={styles.buttonLabel}>Calculate</Text>
+      <View>
+        <Pressable onPress={() => handleCalculate()}>
+          <Text>Calculate</Text>
         </Pressable>
       </View>
     </>

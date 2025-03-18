@@ -17,9 +17,9 @@ interface Props {
 
 export default function RadioChoice({ choices, title, status, onPress }: Props) {
   return (
-    <View style={styles.container}>
-      <View style={styles.container}>
-        <Text style={styles.text}>{title}</Text>
+    <View>
+      <View>
+        <Text>{title}</Text>
       </View>
       {choices.map(({ value, label }: Choice) => (
         <LabeledRadioButton value={value} label={label} status={status} onPress={onPress} />

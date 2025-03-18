@@ -42,7 +42,7 @@ export default function InitialPour({ sweetness, weight, timer }: Props) {
     <View>
       <Text style={stBold ? styles.highlight : styles.normal}>At the beggining pour {stPour} grams of water</Text>
       <Text style={ndBold ? styles.highlight : styles.normal}>
-        {ndPour} grams of water {stPour + ndPour} g total (0:45)
+        {ndPour} grams of water - {stPour + ndPour} g total (0:45)
       </Text>
     </View>
   );
