@@ -12,9 +12,9 @@ interface Props {
 
 export default function LabeledRadioButton({ value, label, status, onPress }: Props) {
   return (
-    <View style={styles.container}>
-      <RadioButton color={theme.colors.accent} uncheckedColor={theme.colors.secondary} value={value} status={status === value ? "checked" : "unchecked"} onPress={() => onPress(value)} />
-      <Text style={styles.label}>{label}</Text>
+    <View>
+      <RadioButton value={value} status={status === value ? "checked" : "unchecked"} onPress={() => onPress(value)} />
+      <Text>{label}</Text>
     </View>
   );
 }

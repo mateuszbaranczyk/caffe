@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Text, View, TextInput, Pressable, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { styles } from "@/components/styles";
 
-import RadioChoice from "@/components/RadioChoice";
-import { theme } from "@/components/theme";
+import ButtonChoice from "@/components/ButtonChoice";
+import { Text, TextInput, Button, Card } from "react-native-paper";
 
 type RootStackParamList = {
   Recipe: {
@@ -18,8 +17,8 @@ export default function Calculator() {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const [coffeeAmount, setCoffeeAmount] = useState("");
-  const [selectStrength, setSelectStrength] = useState("medium");
-  const [selectSweetness, setSelectSweetness] = useState("sweeter");
+  const [selectStrength, setSelectStrength] = useState("");
+  const [selectSweetness, setSelectSweetness] = useState("");
 
   const strengthChoices = [
     { value: "soft", label: "Soft" },
@@ -41,41 +40,25 @@ export default function Calculator() {
   };
 
   return (
-    <ScrollView style={styles.containerMain}>
-      <View>
-        <Text style={styles.textIntro}>Step right up and craft your dream cup of coffee!</Text>
-      </View>
-      <View>
-        <View style={styles.containerInput}>
-          <Text style={styles.textAccent}>How much coffee would you like?</Text>
+    <ScrollView>
+      <Card>
+        <Card.Title title="Step right up and craft your dream cup of coffee!" />
+        <Card.Content>
+          <Text variant="bodyLarge">How much coffee would you like?</Text>
           <TextInput
-            style={styles.textInput}
+            mode="outlined"
+            label="Weight in grams"
             placeholder="Weight in grams"
             value={coffeeAmount}
             onChangeText={setCoffeeAmount}
-            keyboardType="numeric"
-            placeholderTextColor={theme.colors.secondary}
           />
-        </View>
-      </View>
-      <View>
-        <RadioChoice choices={strengthChoices} title="Strength" status={selectStrength} onPress={setSelectStrength} />
-      </View>
-      <View>
-        <RadioChoice
-          choices={sweetnessChoices}
-          title="Sweetness"
-          status={selectSweetness}
-          onPress={setSelectSweetness}
-        />
-      </View>
-      <View>
-        <View style={styles.containerButton}>
-          <Pressable style={styles.button} onPress={() => handleCalculate()}>
-            <Text style={styles.buttonText}>Calculate</Text>
-          </Pressable>
-        </View>
-      </View>
+          <ButtonChoice buttons={strengthChoices} value={selectStrength} setValue={setSelectStrength} />
+          <ButtonChoice buttons={sweetnessChoices} value={selectSweetness} setValue={setSelectSweetness} />
+          <Button mode="contained" onPress={() => handleCalculate()}>
+            Calculate
+          </Button>
+        </Card.Content>
+      </Card>
     </ScrollView>
   );
 }
