@@ -1,5 +1,6 @@
-import { Text, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import React, { useState, useEffect } from "react";
+import { Card, Text } from 'react-native-paper';
 
 import InitialPour from "@/components/InitialPour";
 import PourOver from "@/components/PourOver";
@@ -36,11 +37,16 @@ export default function Recipe({ route }: any) {
   };
 
   return (
-    <View>
-      <Text>Dose: {dose} g</Text>
-      <InitialPour sweetness={selectSweetness} weight={coffeeAmount} timer={timer} />
-      <PourOver strength={selectStrength} weight={coffeeAmount} />
+    <ScrollView>
+      <Card>
+        <Card.Title title="Your coffee is on the way" />
+        <Card.Content>
+          <Text>Dose: {dose} g</Text>
+          <InitialPour sweetness={selectSweetness} weight={coffeeAmount} timer={timer} />
+          <PourOver strength={selectStrength} weight={coffeeAmount} />
+        </Card.Content>
+      </Card>
       <Timer timer={timer} onStart={startTimer} onStop={stopTimer} onReset={resetTimer} />
-    </View>
+    </ScrollView>
   );
 }
