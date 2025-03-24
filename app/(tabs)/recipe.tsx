@@ -5,6 +5,7 @@ import { Card, Text } from "react-native-paper";
 import InitialPour from "@/components/InitialPour";
 import PourOver from "@/components/PourOver";
 import Timer from "@/components/Timer";
+import { styles } from "@/components/styles";
 
 export default function Recipe({ route }: any) {
   const { coffeeAmount = 0, selectStrength = "medium", selectSweetness = "low" } = route.params || {};
@@ -38,15 +39,13 @@ export default function Recipe({ route }: any) {
 
   return (
     <ScrollView>
-      <Card>
-        <Card.Title title="Your coffee is on the way" />
-        <Card.Content>
-          <Text>Dose: {dose} g</Text>
-          <InitialPour sweetness={selectSweetness} weight={coffeeAmount} timer={timer} />
-          <PourOver strength={selectStrength} weight={coffeeAmount} />
-          <Timer timer={timer} onStart={startTimer} onStop={stopTimer} onReset={resetTimer} />
-        </Card.Content>
-      </Card>
+      <Card.Content>
+        <Text variant="bodyLarge">Your coffee is on the way</Text>
+        <Text variant="bodyLarge">Dose: {dose} g</Text>
+        <InitialPour sweetness={selectSweetness} weight={coffeeAmount} timer={timer} />
+        <PourOver strength={selectStrength} weight={coffeeAmount} timer={timer}/>
+        <Timer timer={timer} onStart={startTimer} onStop={stopTimer} onReset={resetTimer} />
+      </Card.Content>
     </ScrollView>
   );
 }

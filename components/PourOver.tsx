@@ -1,17 +1,42 @@
-import { Text, View } from "react-native";
-
+import { useEffect, useState } from "react";
+import { View, StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
 interface Props {
   strength: string;
   weight: number;
+  timer: number;
 }
 
-export default function PourOver({ strength, weight }: Props) {
+export default function PourOver({ strength, weight, timer }: Props) {
   let restWater = Math.round(weight * 0.6);
   let initPour = Math.round(weight * 0.4);
 
   let thirdPour: string;
   let fourthPour: string = "";
   let fifthPour: string = "";
+  const [thirdBold, setThirdBold] = useState(false);
+  const [fourthBold, setFourthBold] = useState(false);
+  const [fifthBold, setFifthBold] = useState(false);
+
+  useEffect(() => {
+    if (timer === 0) {
+      setThirdBold(false);
+      setFourthBold(false);
+      setFifthBold(false);
+    } else if (timer > 90 && timer <= 135) {
+      setThirdBold(true);
+      setFourthBold(false);
+      setFifthBold(false);
+    } else if (timer > 135 && timer <= 165) {
+      setThirdBold(false);
+      setFourthBold(true);
+      setFifthBold(false);
+    } else if (timer > 165) {
+      setThirdBold(false);
+      setFourthBold(false);
+      setFifthBold(true);
+    }
+  }, [timer]);
 
   if (strength === "soft") {
     thirdPour = `${restWater} grams of water - ${initPour + restWater} g total (1:30)`;
@@ -26,9 +51,17 @@ export default function PourOver({ strength, weight }: Props) {
 
   return (
     <View>
-      <Text>{thirdPour}</Text>
-      {fourthPour !== "" && <Text>{fourthPour}</Text>}
-      {fifthPour !== "" && <Text>{fifthPour}</Text>}
+      <Text variant="bodyLarge" style={thirdBold ? styles.highlight : styles.normal}>{thirdPour}</Text>
+      {fourthPour !== "" && <Text variant="bodyLarge" style={fourthBold ? styles.highlight : styles.normal}>{fourthPour}</Text>}
+      {fifthPour !== "" && <Text variant="bodyLarge" style={fifthBold ? styles.highlight : styles.normal}>{fifthPour}</Text>}
     </View>
   );
 }
+const styles = StyleSheet.create({
+  normal: {
+    fontWeight: "normal",
+  },
+  highlight: {
+    fontWeight: "bold",
+  },
+});

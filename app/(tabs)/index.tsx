@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 import ButtonChoice from "@/components/ButtonChoice";
 import { Text, TextInput, Button, Card } from "react-native-paper";
+import { styles } from "@/components/styles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type RootStackParamList = {
   Recipe: {
@@ -33,17 +35,16 @@ export default function Calculator() {
 
   const handleCalculate = () => {
     navigation.navigate("Recipe", {
-      coffeeAmount: "300",
-      selectStrength: "medium",
-      selectSweetness: "low",
+      coffeeAmount: coffeeAmount,
+      selectStrength: selectStrength,
+      selectSweetness: selectSweetness,
     });
   };
 
   return (
     <ScrollView>
-      <Card>
-        <Card.Title title="Step right up and craft your dream cup of coffee!" />
-        <Card.Content>
+      <Card.Content>
+          <Text variant="bodyLarge">Step right up and craft your dream cup of coffee!</Text>
           <Text variant="bodyLarge">How much coffee would you like?</Text>
           <TextInput
             mode="outlined"
@@ -52,13 +53,24 @@ export default function Calculator() {
             value={coffeeAmount}
             onChangeText={setCoffeeAmount}
           />
-          <ButtonChoice buttons={strengthChoices} value={selectStrength} setValue={setSelectStrength} />
-          <ButtonChoice buttons={sweetnessChoices} value={selectSweetness} setValue={setSelectSweetness} />
-          <Button mode="contained" onPress={() => handleCalculate()}>
-            Calculate
-          </Button>
-        </Card.Content>
-      </Card>
+          <ButtonChoice
+            label="Strength"
+            buttons={strengthChoices}
+            value={selectStrength}
+            setValue={setSelectStrength}
+          />
+          <ButtonChoice
+            label="Sweetness"
+            buttons={sweetnessChoices}
+            value={selectSweetness}
+            setValue={setSelectSweetness}
+          />
+          <SafeAreaView edges={[]}>
+            <Button style={styles.button} mode="contained" onPress={() => handleCalculate()}>
+              Calculate
+            </Button>
+          </SafeAreaView>
+      </Card.Content>
     </ScrollView>
   );
 }

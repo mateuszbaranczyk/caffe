@@ -1,5 +1,6 @@
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
+import { Text } from "react-native-paper";
 
 interface Props {
   sweetness: string;
@@ -15,7 +16,10 @@ export default function InitialPour({ sweetness, weight, timer }: Props) {
   const [ndBold, setNdBold] = useState(false);
 
   useEffect(() => {
-    if (timer < 45 && timer > 0) {
+    if (timer === 0) {
+      setStBold(false);
+      setNdBold(false);
+    } else if (timer < 45 && timer > 0) {
       setStBold(true);
       setNdBold(false);
     } else if (timer >= 45 && timer <= 90) {
@@ -40,8 +44,10 @@ export default function InitialPour({ sweetness, weight, timer }: Props) {
 
   return (
     <View>
-      <Text style={stBold ? styles.highlight : styles.normal}>At the beggining pour {stPour} grams of water</Text>
-      <Text style={ndBold ? styles.highlight : styles.normal}>
+      <Text variant="bodyLarge" style={stBold ? styles.highlight : styles.normal}>
+        At the beggining pour {stPour} grams of water
+      </Text>
+      <Text variant="bodyLarge" style={ndBold ? styles.highlight : styles.normal}>
         {ndPour} grams of water - {stPour + ndPour} g total (0:45)
       </Text>
     </View>
