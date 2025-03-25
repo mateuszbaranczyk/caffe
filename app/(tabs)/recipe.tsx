@@ -1,6 +1,6 @@
 import { ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Card, Text, Surface } from "react-native-paper";
+import { Card, Text, Surface, useTheme } from "react-native-paper";
 
 import InitialPour from "@/components/InitialPour";
 import PourOver from "@/components/PourOver";
@@ -8,6 +8,8 @@ import Timer from "@/components/Timer";
 import { styles } from "@/components/styles";
 
 export default function Recipe({ route }: any) {
+  const theme = useTheme();
+
   const { coffeeAmount = 0, selectStrength = "medium", selectSweetness = "low" } = route.params || {};
   const dose = Math.round(coffeeAmount / 15);
 
@@ -38,7 +40,7 @@ export default function Recipe({ route }: any) {
   };
 
   return (
-    <ScrollView style={styles.mainContainer}>
+    <ScrollView style={{ backgroundColor: theme.colors.background }}>
       <Card.Content>
         <Text variant="headlineSmall">Your coffee is on the way!</Text>
         <Surface style={styles.surface} elevation={4} mode="flat">

@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, View, StyleSheet } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 import ButtonChoice from "@/components/ButtonChoice";
-import { Text, TextInput, Button, Card } from "react-native-paper";
-import { styles } from "@/components/styles";
+import { Text, TextInput, Button, Card, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type RootStackParamList = {
@@ -16,6 +15,7 @@ type RootStackParamList = {
 };
 
 export default function Calculator() {
+  const theme = useTheme();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const [coffeeAmount, setCoffeeAmount] = useState("");
@@ -42,7 +42,7 @@ export default function Calculator() {
   };
 
   return (
-    <ScrollView style={styles.mainContainer}>
+    <ScrollView style={{ backgroundColor: theme.colors.background }}>
       <Card.Content>
           <Text variant="headlineSmall">Step right up and craft your dream cup of coffee!</Text>
           <View style={styles.textInput}>
@@ -76,3 +76,21 @@ export default function Calculator() {
     </ScrollView>
   );
 }
+
+
+const styles = StyleSheet.create({
+  card: {
+  },
+  button: {
+  },
+  textInput: {
+  },
+  mainContainer: {
+    flex: 1,
+  },
+  surface: {
+    width: 150,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
