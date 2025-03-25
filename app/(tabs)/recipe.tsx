@@ -1,6 +1,6 @@
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Card, Text } from "react-native-paper";
+import { Card, Text, Surface } from "react-native-paper";
 
 import InitialPour from "@/components/InitialPour";
 import PourOver from "@/components/PourOver";
@@ -38,12 +38,14 @@ export default function Recipe({ route }: any) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.mainContainer}>
       <Card.Content>
-        <Text variant="bodyLarge">Your coffee is on the way</Text>
-        <Text variant="bodyLarge">Dose: {dose} g</Text>
+        <Text variant="headlineSmall">Your coffee is on the way!</Text>
+        <Surface style={styles.surface} elevation={4} mode="flat">
+          <Text variant="bodyLarge">Dose: {dose} g</Text>
+        </Surface>
         <InitialPour sweetness={selectSweetness} weight={coffeeAmount} timer={timer} />
-        <PourOver strength={selectStrength} weight={coffeeAmount} timer={timer}/>
+        <PourOver strength={selectStrength} weight={coffeeAmount} timer={timer} />
         <Timer timer={timer} onStart={startTimer} onStop={stopTimer} onReset={resetTimer} />
       </Card.Content>
     </ScrollView>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
+import { SPACING } from "./theme";
 interface Props {
   strength: string;
   weight: number;
@@ -60,8 +61,10 @@ export default function PourOver({ strength, weight, timer }: Props) {
 const styles = StyleSheet.create({
   normal: {
     fontWeight: "normal",
+    marginVertical: SPACING.sm,
   },
   highlight: {
     fontWeight: "bold",
+    marginVertical: SPACING.sm,
   },
 });

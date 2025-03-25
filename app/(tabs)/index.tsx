@@ -42,17 +42,19 @@ export default function Calculator() {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.mainContainer}>
       <Card.Content>
-          <Text variant="bodyLarge">Step right up and craft your dream cup of coffee!</Text>
-          <Text variant="bodyLarge">How much coffee would you like?</Text>
-          <TextInput
-            mode="outlined"
-            label="Weight in grams"
-            placeholder="Weight in grams"
-            value={coffeeAmount}
-            onChangeText={setCoffeeAmount}
-          />
+          <Text variant="headlineSmall">Step right up and craft your dream cup of coffee!</Text>
+          <View style={styles.textInput}>
+            <Text variant="bodyLarge">How much coffee would you like?</Text>
+            <TextInput
+              mode="outlined"
+              label="Weight in grams"
+              placeholder="Weight in grams"
+              value={coffeeAmount}
+              onChangeText={setCoffeeAmount}
+            />
+          </View>
           <ButtonChoice
             label="Strength"
             buttons={strengthChoices}

@@ -17,10 +17,15 @@ interface Props {
 
 export default function ButtonChoice({ label, buttons, value, setValue }: Props) {
   return (
-    <SafeAreaView edges={[]}>
+    <SafeAreaView style={styles.buttons} edges={[]}>
       <Text variant="bodyLarge">{label}</Text>
       <SegmentedButtons value={value} onValueChange={setValue} buttons={buttons} />
     </SafeAreaView>
   );
 }
 
+const styles = StyleSheet.create({
+  buttons: {
+    marginVertical: SPACING.sm,
+  },
+});

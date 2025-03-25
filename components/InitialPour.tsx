@@ -1,6 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Text } from "react-native-paper";
+import { SPACING } from "./theme";
 
 interface Props {
   sweetness: string;
@@ -57,8 +58,10 @@ export default function InitialPour({ sweetness, weight, timer }: Props) {
 const styles = StyleSheet.create({
   normal: {
     fontWeight: "normal",
+    marginVertical: SPACING.sm,
   },
   highlight: {
     fontWeight: "bold",
+    marginVertical: SPACING.sm,
   },
 });
